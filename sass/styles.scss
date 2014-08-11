@@ -1,0 +1,362 @@
+$textColor: #bdbdbd;
+$textColor2: #666;
+$textColor3: #d1d1d1;
+$textColorBlue: #4183c4;
+$borderColor: #eee;
+body{
+  font-family: Helvetica;
+  margin: 0;
+}
+
+
+.wrapper{
+  width: 980px;
+  margin: auto;
+  position: relative;
+  padding-top: 20px;
+}
+
+header{
+  background-color: $borderColor;
+  width: 100%;
+  border-bottom: 1px solid $textColor3;
+}
+.topNav{
+  padding-top: 4px;
+  padding-bottom: 7px;
+  ul{
+    list-style-type: none;
+    margin:0;
+    padding-left: 12px;
+  }
+  li{
+    padding-left: 4px;
+    padding-right: 4px;
+    display: inline-block;
+
+    #box{
+      width: 185px;
+      height: 22px;
+      border: 1px solid $textColor3;
+      border-radius: 3px;
+    }
+    a{
+      text-decoration:none;
+      color: black;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    a:hover{
+      color: $textColorBlue;
+    }
+  }
+}
+.sidebar{
+  position: relative;
+  width: 25%;
+  vertical-align: top;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+}
+.side{
+  border-bottom: 1px, solid, $borderColor;
+  h1{
+    font-size: 26px;
+    margin:0;
+    padding-top: 6px;
+  }
+  h2{
+    font-size: 22px;
+    font-weight: lighter;
+    margin:0;
+    padding-bottom: 20px;
+    color: $textColor2;
+  }
+  img{
+    border-radius: 6px;
+    width: 230px;
+    height: 230px;
+  }
+}
+
+.side2{
+
+  p{
+    padding-bottom: 8px;
+    margin: 0;
+    font-size: 14px;
+  }
+  span{
+    width: 16px;
+    color: $textColor;
+    padding-right: 10px;
+  }
+}
+
+.side3{
+  text-align: center;
+  ul{
+    list-style-type: none;
+    padding: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+  }
+  li{
+    display: inline-block;
+    text-align: center;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+    h2{
+      font-weight: bold;
+      font-size: 28px;
+      margin: 0;
+    }
+    p{
+      margin: 0;
+      font-size: 11px;
+    }
+  }
+  a:hover{
+    color: $textColorBlue;
+  }
+}
+
+.side4{
+  img{
+  width: 36px;
+  height: 36px;
+  }
+}
+
+.main{
+  position: relative;
+  width: 71%;
+  float: left;
+  vertical-align: top;
+  padding-right: 10px;
+  .repos{
+   display: none;
+ }
+  .pubAct{
+   display: none;
+ }
+
+}
+
+
+.main {
+  .currentTab{
+  display: block;
+  }
+}
+
+.mainNav{
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  li{
+    display: inline-block;
+    text-align: center;
+    margin-right: -5px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid $borderColor;
+
+    a{
+      font-size: 14px;
+      color: $textColor2;
+      text-decoration: none;
+      padding: 10px;
+    }
+  }
+  span{
+    padding-right: 8px;
+    color: $textColor2;
+  }
+
+}
+
+.mainNav{
+  .active{
+    border-bottom: none;
+    a{
+    color: black;
+    border-left: 1px solid $borderColor;
+    border-right: 1px solid $borderColor;
+    border-top: 1px solid $borderColor;
+    border-radius: 3px 3px 0 0;
+    }
+  }
+}
+.repos{
+  margin: 0;
+  padding: 12px;
+  display: block;
+  border-bottom: 1px solid $borderColor;
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+  #repoName span{
+    float: left;
+    color: $textColor;
+    padding-left: 5px;
+  }
+  #repoName ul{
+    width: 25%;
+    list-style-type: none;
+    padding-left: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  #repoName h3{
+    margin-bottom: 7px;
+  }
+  #repoName p{
+    margin: 0;
+    color: $textColor;
+    font-size: 11px;
+  }
+  #repoName a{
+    text-decoration: none;
+    color: $textColorBlue;
+  }
+  #repoName a:hover{
+    text-decoration: underline;
+  }
+  #floatInfo{
+    font-size: 11px;
+    font-weight: bold;
+    float: right;
+    margin-right: 20px;
+  }
+  #floatInfo ul{
+    list-style-type: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  #floatInfo li{
+    padding-left: 15px;
+    display: inline-block;
+
+  }
+  #floatInfo a{
+    text-decoration: none;
+    padding-right: 0;
+    color: $textColor2;
+  }
+  #floatInfo a:hover{
+    color: $textColorBlue;
+  }
+  #floatInfo p{
+    color: $textColor2;
+  }
+  #floatInfo span{
+    padding-right: 3px;
+  }
+}
+
+.pubAct{
+  display: block;
+  position: relative;
+  border-bottom: 1px solid $borderColor;
+  .icon{
+    position: absolute;
+    top: 22px;
+    left: 8px;
+    margin-right: 20px;
+    color: $textColor;
+  }
+  .icon2{
+    position: absolute;
+    top: 12px;
+    margin-right: 20px;
+    color: $textColor;
+  }
+  .date{
+    font-size: 12px;
+    color: $textColor;
+  }
+
+}
+.branchInfo{
+  display: inline-block;
+  font-size: 13px;
+  padding-left: 42px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  a{
+    color: $textColorBlue;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  #branchButton{
+    padding: 4px;
+    background-color: #e8f1f6;
+    border-radius: 6px;
+    color: $textColor;
+    margin-right: 2px;
+    a{
+      font-size: 14px;
+      color: $textColor;
+      font-family: 'Inconsolata';
+    }
+  }
+}
+
+.pushInfo{
+  padding-left: 42px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+  a{
+    color: $textColorBlue;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  #floatPic{
+    float: left;
+    margin-right: 6px;
+  }
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding-bottom: 20px;
+    padding-left: 11px;
+    padding-top: 3px;
+  }
+  li{
+    font-size: 13px;
+    display: inline-block;
+    img{
+      border-radius: 3px;
+    }
+  }
+  #diffFont {
+    font-size: 14px;
+    font-family: "Inconsolata";
+    #diffFont a:hover{
+      text-decoration: underline;
+    }
+  }
+}

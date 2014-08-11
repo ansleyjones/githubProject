@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css">
+
+  <title>gitHub Profile/Ansley Jones</title>
+
+<!-- SIDEBAR SCRIPTS -->
+    <script type="template/html" id="sideTmpl">
+      <% _.each(myData, function(element, index, list) { %>
+        <div class="side">
+          <img src="<%= element.avatar_url %>">
+          <h1><%= element.name %></h1>
+          <h2><%= element.login %></h2>
+        </div>
+      <% }); %>
+    </script>
+    <script type="template/html" id="sideTmpl2">
+      <% _.each(myData, function(element, index, list) { %>
+        <div class="side2">
+          <p><span class="octicon octicon-location"></span><%= element.location %></p>
+          <p><span class="octicon octicon-clock"></span>Joined on Jul 23, 2014</p>
+        </div>
+      <% }); %>
+    </script>
+    <script type="template/html" id="sideTmpl3">
+      <% _.each(myData, function(element, index, list) { %>
+        <div class="side3">
+          <ul>
+            <li><a href=""><h2><%= element.followers %></h2><p>Followers</p></a>
+  </li>
+            <li><a href=""><h2>0</h2><p>Starred</p></a>
+  </li>
+            <li><a href=""><h2><%= element.following %></h2><p>Following</p></a>
+  </li>
+          </ul>
+        </div>
+      <% }); %>
+    </script>
+    <script type="template/html" id="sideTmpl4">
+      <% _.each(orgData, function(element, index, list) { %>
+        <div class="side4">
+          <p>Organizations</p>
+          <a href="<%= element.url %>"><img src="<%= element.avatar_url %>"></a>
+        </div>
+      <% }); %>
+    </script>
+
+
+<!-- MAININFO SCRIPTS -->
+
+    <script type="template/html" id="repositoriesList">
+      <% _.each(myRepos, function(element, index, list) { %>
+        <div class="repos currentTab">
+            <ul>
+              <li>
+                <aside id="floatInfo">
+                  <ul>
+                    <li><p><%= element.language%></p></li>
+                    <li><a href="<% element.stargazers_url %>"><span class="octicon octicon-star"></span><span><%=element.stargazers_count%></span></a></li>
+                    <li><a href="<% element.forks_url %>"><span class="octicon octicon-git-branch"></span><span><%=element.stargazers_count%></span></a></li>
+                  </ul>
+                </aside>
+              </li>
+              <li>
+              <aside id="repoName">
+              <span class="mega-octicon octicon-repo"></span>
+                <ul>
+                  <li><a href="<%= element.html_url %>"><h3><%= element.name %></h3></a></li>
+                  <li><p>Last updated
+                  <% var update = moment(element.updated_at); %>
+                  <%= update.from() %>
+                  </p></li>
+                </ul>
+              </aside>
+            </li>
+          </ul>
+        </div>
+      <% }); %>
+    </script>
+
+    <script type="template/html" id="publicActivity">
+      <% _.each(myActivities, function(element, index, list) { %>
+        <div class="pubAct">
+        <% if(element.type == "CreateEvent" && element.payload.ref_type == "branch") { %>
+          <div class="createBranch">
+            <div class="icon">
+              <span style="width:16px;" class="octicon octicon-git-branch"></span>
+            </div>
+            <div class="branchInfo">
+              <p>
+                <a href="<%= element.repo.url%>"><%=element.actor.login%></a>
+                created branch
+                <span id="branchButton">
+                <span class="octicon octicon-git-branch"></span>
+                <a href="<%=element.repo.url%>"><%=element.payload.ref%></a>
+                </span>
+                at
+                <a href="<%=element.repo.url%>"><%=element.repo.name%></a>
+                <span class="date">
+                  <% var update = moment(element.created_at)%>
+                  <%= update.from()%>
+                </span>
+              </p>
+            </div>
+          </div>
+
+        <% } else if(element.type == "CreateEvent" && element.payload.ref_type == "repository") { %>
+          <div class="createRepo">
+            <div class="icon">
+              <span style="width:16px;" class="octicon octicon-repo"></span>
+            </div>
+            <div class="branchInfo">
+              <p>
+              <a href="<%= element.repo.url%>"><%=element.actor.login%></a>
+              created repository
+              <a href="<%= element.repo.url%>"><%=element.actor.login%></a>
+              <span class="date">
+                <% var update = moment(element.created_at)%>
+                <%= update.from()%>
+              </span>
+              </p>
+            </div>
+          </div>
+
+        <% } else if(element.type == "PushEvent") { %>
+          <div class="push">
+            <div class="icon2">
+              <span class="mega-octicon octicon-git-commit"></span>
+            </div>
+            <div class="pushInfo">
+            <span class="date">
+            <% var update = moment(element.created_at)%>
+            <%= update.from()%>
+            </span>
+            <p>
+            <a href="<%=element.repo.url%>"><%=element.actor.login%></a>
+            pushed to
+            <a href="<%=element.repo.url%>">master</a>
+            at
+            <a href="<%=element.repo.url%>"><%=element.repo.name%></a>
+            </p>
+            <span id="floatPic">
+            <a href="https://github.com/ansleyjones"><img style="width:30px;" src="<%=element.actor.avatar_url%>" alt=""></a>
+            </span>
+            <ul>
+              <li><img style="width:16px;" src="<%=element.actor.avatar_url%>" alt=""></li>
+              <li id="diffFont">
+              <% var shortStr = element.payload.commits[0].sha; %>
+              <a href="<%=element.repo.url%>"><%=shortStr.substring(0,7)%></a>
+              </a>
+              </li>
+              <li><%=element.payload.commits[0].message%></li>
+            </ul>
+            </div>
+          </div>
+        <% } %>
+        </div>
+      <% }); %>
+    </script>
+</head>
+
+<body>
+
+  <header>
+    <div class="topNav">
+      <ul>
+        <li><a href="http://github.com"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><input type="text" id="box" placeholder="Search or type a command"></li>
+        <li><a href="">Explore</a></li>
+        <li><a href="">Gist</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Help</a></li>
+      </ul>
+
+    </div>
+  </header>
+  <div class="wrapper">
+
+    <div class="sidebar">
+
+
+    </div>
+
+    <div class="main">
+      <div class="mainNav">
+        <ul>
+          <li class="active">
+            <a rel="repos" href=""><span class="octicon octicon-diff-added"></span>Contributions</a>
+          </li>
+          <li>
+            <a rel="repos" href=""><span class="octicon octicon-repo"></span>Repositories</a>
+          </li>
+          <li>
+            <a rel="pubAct" href=""><span class="octicon octicon-rss"></span>Public activity</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mainInfo">
+
+      </div>
+
+    </div>
+
+  </div>
+
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="node_modules/underscore/underscore.js"></script>
+<script type="text/javascript" src="node_modules/moment/moment.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
